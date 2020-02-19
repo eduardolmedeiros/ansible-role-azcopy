@@ -1,7 +1,9 @@
 Role Name
 =========
 
-A brief description of the role goes here.
+This role install azcopy binary.
+
+[AzCopy](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10) is a command-line utility that you can use to copy blobs or files to or from a storage account. This article helps you download AzCopy, connect to your storage account, and then transfer files.
 
 Requirements
 ------------
