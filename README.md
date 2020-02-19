@@ -42,4 +42,4 @@ GPLv3
 Author Information
 ------------------
 
-[Eduardo Medeiros](https://www.emedeiros.me/
+[Eduardo Medeiros](https://www.emedeiros.me/)
