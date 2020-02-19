@@ -24,7 +24,7 @@ If you want to replace or change some variable, please change on playbook level.
 | azcopy_bin_path    | installation path        | yes       |
 | azcopy_pkg_url     | azcopy source url        | yes       |
 | azcopy_pkg         | azcopy package name      | yes       |
-| azcopy_sha256      |sha256 sum                | yes       |
+| azcopy_sha256      | sha256 sum               | yes       |
 ```
 
 Dependencies
@@ -37,7 +37,7 @@ Example Playbook
 ```
     - hosts: servers
       roles:
-         - { role: eduardolmedeiros.azcopy }
+         - eduardolmedeiros.azcopy
 ```
 
 License
