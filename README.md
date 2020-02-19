@@ -1,5 +1,5 @@
-Role Name
-=========
+azcopy
+======
 
 This role install azcopy binary from microsoft repository.
 
