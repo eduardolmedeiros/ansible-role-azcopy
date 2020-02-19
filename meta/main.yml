@@ -1,5 +1,6 @@
 ---
 galaxy_info:
+  role_name: azcopy
   author: Eduardo Medeiros
   description: This is a role for azcopy installation.
   license: GPLv3
