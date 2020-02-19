@@ -23,7 +23,6 @@ If you want to replace or change some variable, please change on playbook level.
 | azcopy_tmp_install | temp installation folder | yes       |
 | azcopy_bin_path    | installation path        | yes       |
 | azcopy_pkg_url     | azcopy source url        | yes       |
-| azcopy_pkg         | azcopy package name      | yes       |
 | azcopy_sha256      | sha256 sum               | yes       |
 ```
 
