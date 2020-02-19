@@ -1,0 +1,51 @@
+---
+
+- name: Install package dependencies
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ azcopy_pkg_deps }}"
+
+- name: Validate remote directory
+  file:
+    path: "{{ azcopy_tmp_install }}"
+    state: directory
+
+- name: List versions installed
+  find:
+    paths: "{{ azcopy_tmp_install }}"
+    file_type: any
+    recurse: false
+    excludes: 'azcopy_linux_amd64_{{ azcopy_version }},azcopy_linux_amd64_{{ azcopy_version }}.tar.gz'
+  register: azcopy_old_versions
+
+- name: Delete old versions
+  file:
+    path: "{{ item }}"
+    state: absent
+  loop: "{{ azcopy_old_versions['files'] | map(attribute='path') | list }}"
+
+- name: "Download azcopy {{ azcopy_version }} package"
+  get_url:
+    url: "{{ azcopy_pkg_url }}"
+    dest: "{{ azcopy_tmp_install }}/azcopy_linux_amd64_{{ azcopy_version }}.tar.gz"
+    checksum: "{{ azcopy_sha256 }}"
+    validate_certs: false
+  register: azcopy_download
+
+- name: "Unarchive azcopy {{ azcopy_version }} package"
+  unarchive:
+    remote_src: true
+    src: "{{ azcopy_tmp_install }}/azcopy_linux_amd64_{{ azcopy_version }}.tar.gz"
+    dest: "{{ azcopy_tmp_install }}"
+    mode: 0755
+  args:
+    creates: "{{ azcopy_tmp_install }}/azcopy_linux_amd64_{{ azcopy_version }}"
+
+- name: "Install azcopy {{ azcopy_version }} package"
+  copy:
+    remote_src: true
+    src: "{{ azcopy_tmp_install }}/azcopy_linux_amd64_{{ azcopy_version }}/azcopy"
+    dest: "{{ azcopy_bin_path }}"
+    mode: '0755'
+  when: azcopy_download is changed
