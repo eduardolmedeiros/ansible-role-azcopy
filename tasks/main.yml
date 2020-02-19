@@ -11,7 +11,7 @@
     path: "{{ azcopy_tmp_install }}"
     state: directory
 
-- name: List versions installed
+- name: List current versions installed
   find:
     paths: "{{ azcopy_tmp_install }}"
     file_type: any

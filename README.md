@@ -37,7 +37,7 @@ Example Playbook
 ```
     - hosts: servers
       roles:
-         - { role: azcopy }
+         - { role: eduardolmedeiros.azcopy }
 ```
 
 License
