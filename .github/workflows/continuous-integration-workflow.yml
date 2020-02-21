@@ -1,25 +1,11 @@
 ---
-name: CI
-
-on:
-  - push
+on: push
 
 jobs:
-  build:
+  molecule:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        image:
-          - centos
-          - debian
-          - ubuntu
     steps:
-      - name: checkout
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
         with:
           path: "${{ github.repository }}"
-      - name: molecule
-        uses: robertdebock/molecule-action@2.0.0
-        with:
-          image: "${{ matrix.image }}"
-          options: parallel
+      - uses: gofrolist/molecule-action@master
