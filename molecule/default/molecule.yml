@@ -10,10 +10,6 @@ platforms:
     image: centos:6
   - name: centos-7
     image: centos:7
-  - name: debian-wheezy
-    image: debian:wheezy
-  - name: debian-jessie
-    image: debian:jessie
   - name: debian-stretch
     image: debian:stretch
   - name: debian-buster
