@@ -6,24 +6,30 @@
     state: present
   with_items: "{{ azcopy_pkg_deps }}"
 
-- name: Validate remote directory
+- name: Create remote temporary folder
   file:
     path: "{{ azcopy_tmp_install }}"
     state: directory
+  register: azcopy_create_remote_dir
 
-- name: List current versions installed
-  find:
-    paths: "{{ azcopy_tmp_install }}"
-    file_type: any
-    recurse: false
-    excludes: 'azcopy_linux_amd64_{{ azcopy_version }},azcopy_linux_amd64_{{ azcopy_version }}.tar.gz'
-  register: azcopy_old_versions
+- name: Checking current version installed
+  lineinfile:
+    name: "{{ azcopy_tmp_install }}/azcopy_version.txt"
+    regexp: '^'
+    line: "{{ azcopy_version }}"
+    state: present
+    create: yes
+  register: azcopy_version_installed
 
-- name: Delete old versions
-  file:
-    path: "{{ item }}"
-    state: absent
-  loop: "{{ azcopy_old_versions['files'] | map(attribute='path') | list }}"
+- name: Display previous version installed
+  debug:
+    msg: "The version {{ azcopy_version }} is already installed"
+  when: azcopy_version_installed is not changed
+
+- name: Preparing for installation
+  debug:
+    msg: "The version {{ azcopy_version }} will be installed"
+  when: azcopy_version_installed is changed
 
 - name: "Download azcopy {{ azcopy_version }} package"
   get_url:
@@ -31,21 +37,26 @@
     dest: "{{ azcopy_tmp_install }}/azcopy_linux_amd64_{{ azcopy_version }}.tar.gz"
     checksum: "{{ azcopy_sha256 }}"
     validate_certs: false
+    timeout: 30
   register: azcopy_download
+  when:
+    - azcopy_version_installed is changed or azcopy_create_remote_dir is changed
 
 - name: "Unarchive azcopy {{ azcopy_version }} package"
   unarchive:
     remote_src: true
+    owner: root
+    group: root
     src: "{{ azcopy_tmp_install }}/azcopy_linux_amd64_{{ azcopy_version }}.tar.gz"
-    dest: "{{ azcopy_tmp_install }}"
-    mode: 0755
-  args:
-    creates: "{{ azcopy_tmp_install }}/azcopy_linux_amd64_{{ azcopy_version }}"
-
-- name: "Install azcopy {{ azcopy_version }} package"
-  copy:
-    remote_src: true
-    src: "{{ azcopy_tmp_install }}/azcopy_linux_amd64_{{ azcopy_version }}/azcopy"
     dest: "{{ azcopy_bin_path }}"
-    mode: '0755'
-  when: azcopy_download is changed
+    mode: 0755
+    exclude:
+      - ThirdPartyNotice.txt
+    extra_opts: [--strip-components=1]
+  when:
+    - azcopy_version_installed is changed or azcopy_create_remote_dir is changed
+
+- name: "Cleanup azcopy_linux_amd64_{{ azcopy_version }}.tar.gz"
+  file:
+    path: "{{ azcopy_tmp_install }}/azcopy_linux_amd64_{{ azcopy_version }}.tar.gz"
+    state: absent
