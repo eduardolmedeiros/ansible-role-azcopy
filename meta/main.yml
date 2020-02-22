@@ -3,7 +3,7 @@ galaxy_info:
   role_name: azcopy
   author: Eduardo Medeiros
   description: This is a role for azcopy installation.
-  license: BSD
+  license: MIT
   min_ansible_version: 2.7
   platforms:
     - name: EL
