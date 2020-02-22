@@ -5,6 +5,9 @@ This role install azcopy binary from microsoft repository.
 
 [AzCopy](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10) is a command-line utility that you can use to copy blobs or files to or from a storage account.
 
+[![Build Status](https://github.com/eduardolmedeiros/ansible-role-azcopy/workflows/Molecule/badge.svg)](https://github.com/eduardolmedeiros/ansible-role-azcopy/actions?query=workflow%3AMolecule)
+[![Ansible Galaxy](https://img.shields.io/badge/galaxy-eduardolmedeiros.azcopy-blue.svg)](https://galaxy.ansible.com/eduardolmedeiros/azcopy)
+
 Requirements
 ------------
 No special requirements.
