@@ -60,3 +60,4 @@
   file:
     path: "{{ azcopy_tmp_install }}/azcopy_linux_amd64_{{ azcopy_version }}.tar.gz"
     state: absent
+  when: azcopy_download is changed
