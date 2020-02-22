@@ -5,9 +5,15 @@ This role install azcopy binary from microsoft repository.
 
 [AzCopy](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10) is a command-line utility that you can use to copy blobs or files to or from a storage account.
 
+[![Build Status](https://github.com/eduardolmedeiros/ansible-role-azcopy/workflows/Molecule/badge.svg)](https://github.com/eduardolmedeiros/ansible-role-azcopy/actions?query=workflow%3AMolecule)
+[![Ansible Galaxy](https://img.shields.io/badge/galaxy-eduardolmedeiros.azcopy-blue.svg)](https://galaxy.ansible.com/eduardolmedeiros/azcopy)
+
 Requirements
 ------------
-N/A
+
+* This role requires a CentOS, Ubuntu, Debian, or Red Hat Enterprise Linux distribution.
+* Ansible 2.7 or higher.
+
 
 
 Role Variables
@@ -17,13 +23,13 @@ All "standards" variables are defined on defaults/main.yml.
 If you want to replace or change some variable, please change on playbook level.
 
 ```
-| variable           | description              | mandatory |
-|--------------------|--------------------------|-----------|
-| azcopy_pkg_deps    | package dependencies     | yes       |
-| azcopy_tmp_install | temp installation folder | yes       |
-| azcopy_bin_path    | installation path        | yes       |
-| azcopy_pkg_url     | azcopy source url        | yes       |
-| azcopy_sha256      | sha256 sum               | yes       |
+| variable           | description              |
+|--------------------|--------------------------|
+| azcopy_pkg_deps    | package dependencies     |
+| azcopy_tmp_install | temp installation folder |
+| azcopy_bin_path    | installation path        |
+| azcopy_pkg_url     | azcopy source url        |
+| azcopy_sha256      | sha256 sum               |
 ```
 
 Dependencies
@@ -42,7 +48,7 @@ Example Playbook
 License
 -------
 
-GPLv3
+MIT
 
 Author Information
 ------------------
