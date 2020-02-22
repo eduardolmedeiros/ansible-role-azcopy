@@ -10,7 +10,10 @@ This role install azcopy binary from microsoft repository.
 
 Requirements
 ------------
-No special requirements.
+
+* This role requires a CentOS, Ubuntu, Debian, or Red Hat Enterprise Linux distribution.
+* Ansible 2.7 or higher.
+
 
 
 Role Variables
