@@ -4,6 +4,6 @@ azcopy_pkg_deps:
   - unzip
 azcopy_tmp_install: /tmp/azcopy
 azcopy_bin_path: /usr/local/bin
-azcopy_pkg_url: https://azcopyvnext.azureedge.net/release20200410/azcopy_linux_amd64_10.4.0.tar.gz
-azcopy_version: 10.4.0
-azcopy_sha256: sha256:abb3394a2ec91a704818fa91bb4aaaf7bb8d58f242bea00cebe2719c0366aeb2
+azcopy_pkg_url: https://azcopyvnext.azureedge.net/release20200425/azcopy_linux_amd64_10.4.1.tar.gz
+azcopy_version: 10.4.1
+azcopy_sha256: sha256:c2ec469f848886613418bf17ecdd84d2af756a3fc03ef16137f7b00f224d0c39
