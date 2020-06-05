@@ -1,0 +1,20 @@
+---
+# This is an example playbook to execute Ansible tests.
+
+- name: Verify
+  hosts: all
+  vars_files:
+    - ../../defaults/main.yml 
+  tasks:
+    - name: Register current version
+      command: /usr/local/bin/azcopy --version
+      register: azcopy_version_installed
+
+    - name: Check installation
+      fail:
+        msg: "azcopy {{ azcopy_version }} installation failure"
+      when: azcopy_version_installed.stdout.find(azcopy_version) == -1
+
+    - name: "Display version installed {{ azcopy_version }}"
+      debug:
+        msg: "{{ azcopy_version_installed.stdout_lines }} is installed."
