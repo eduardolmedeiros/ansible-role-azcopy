@@ -15,6 +15,6 @@
         msg: "azcopy {{ azcopy_version }} installation failure"
       when: azcopy_version_installed.stdout.find(azcopy_version) == -1
 
-    - name: "Display version installed {{ azcopy_version }}"
+    - name: Display version installed
       debug:
         msg: "{{ azcopy_version_installed.stdout_lines }} is installed."
