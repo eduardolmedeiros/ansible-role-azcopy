@@ -4,6 +4,7 @@
   package:
     name: "{{ item }}"
     state: present
+    update_cache: yes
   with_items: "{{ azcopy_pkg_deps }}"
 
 - name: Create remote temporary folder
