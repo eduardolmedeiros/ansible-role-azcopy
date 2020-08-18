@@ -1,0 +1,16 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+platforms:
+  - name: instance
+    image: ${TEST_BASE_IMAGE}
+provisioner:
+  name: ansible
+# commented on purpose to validate that molecule will inherit it from
+# parent folder name:
+# scenario:
+#   name: raises
+verifier:
+  name: ansible

@@ -1,0 +1,16 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+platforms:
+  - name: instance
+    image: ${TEST_BASE_IMAGE}
+    command: /sbin/init
+    privileged: true
+provisioner:
+  name: ansible
+  playbooks:
+    side_effect: side_effect.yml
+verifier:
+  name: ansible
