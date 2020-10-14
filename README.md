@@ -31,7 +31,7 @@ If you want to replace or change some variable, please change on playbook level.
 
 N/A
 
-## Install collection
+## Install role
 
 ```
 ansible-galaxy role install eduardolmedeiros.azcopy
