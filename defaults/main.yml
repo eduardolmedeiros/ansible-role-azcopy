@@ -1,9 +1,10 @@
 ---
 # defaults file for ansible-role-azcopy
 azcopy_pkg_deps:
+  - tar
   - unzip
 azcopy_tmp_install: /tmp/azcopy
 azcopy_bin_path: /usr/local/bin
-azcopy_pkg_url: https://azcopyvnext.azureedge.net/release20210226/azcopy_linux_amd64_10.9.0.tar.gz
-azcopy_version: 10.9.0
-azcopy_sha256: sha256:8c1f76a7edf21a2f1059e65cff73d6e8e2629a677823b93976f1a073341e8670
+azcopy_pkg_url: https://azcopyvnext.azureedge.net/release20210415/azcopy_linux_amd64_10.10.0.tar.gz
+azcopy_version: 10.10.0
+azcopy_sha256: sha256:d8c5b55aba1dd13b396bebe50f3a87fcda14f4b3f69d5539cb36bd9b41aad974
