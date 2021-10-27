@@ -6,6 +6,8 @@ on:
     branches:
       - master
       - release/v*
+      - feature/*
+      - hotfix/*
   pull_request:
     branches:
       - master
@@ -19,4 +21,4 @@ jobs:
         with:
           path: "${{ github.repository }}"
       - name: molecule
-        uses: robertdebock/molecule-action@2.3.4
+        uses: robertdebock/molecule-action@2.7.2
