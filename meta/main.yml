@@ -1,6 +1,7 @@
 ---
 galaxy_info:
   role_name: azcopy
+  namespace: eduardolmedeiros
   author: Eduardo Medeiros
   description: This is a role for azcopy installation.
   license: MIT
