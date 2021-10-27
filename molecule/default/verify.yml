@@ -6,15 +6,17 @@
   vars_files:
     - ../../defaults/main.yml
   tasks:
-    - name: Register current version
-      command: /usr/local/bin/azcopy --version
-      register: azcopy_version_installed
+    - name: Check current version installed
+      shell: "{{ azcopy_bin_path }}/azcopy --version 2>&1 | head -n 1 | grep {{ azcopy_version }}"
+      failed_when: false
+      changed_when: false
+      register: version
 
     - name: Check installation
       fail:
         msg: "azcopy {{ azcopy_version }} installation failure"
-      when: azcopy_version_installed.stdout.find(azcopy_version) == -1
+      when: version.rc != 0
 
     - name: Display version installed
       debug:
-        msg: "{{ azcopy_version_installed.stdout_lines }} is installed."
+        msg: "{{ version.stdout_lines }} is installed."
