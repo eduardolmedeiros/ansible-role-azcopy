@@ -12,10 +12,10 @@ platforms:
     image: centos:7
   - name: centos-8
     image: centos:8
-  - name: debian-stretch
-    image: debian:stretch
   - name: debian-buster
     image: debian:buster
+  - name: debian-bullseye
+    image: debian:bullseye
   - name: ubuntu-18-04
     image: ubuntu:18.04
   - name: ubuntu-20-04
