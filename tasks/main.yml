@@ -1,25 +1,28 @@
 ---
 
 - name: Install package dependencies
-  package:
+  ansible.builtin.package:
     name: "{{ item }}"
     state: present
     update_cache: yes
   with_items: "{{ azcopy_pkg_deps }}"
 
 - name: Check current version installed
-  shell: "{{ azcopy_bin_path }}/azcopy --version 2>&1 | head -n 1 | grep {{ azcopy_version }}"
+  ansible.builtin.shell: "{{ azcopy_bin_path }}/azcopy --version 2>&1 | head -n 1 | grep {{ azcopy_version }}"
   failed_when: false
   changed_when: false
   register: version
 
 - name: "Install azcopy {{ azcopy_version }}"
-  unarchive:
+  ansible.builtin.unarchive:
     src: "{{ azcopy_pkg_url }}"
     dest: "{{ azcopy_bin_path }}"
+    owner: "root"
+    group: "root"
+    mode: "u+rwx,g+rx,o+rx"
     remote_src: yes
     exclude:
       - ThirdPartyNotice.txt
       - NOTICE.txt
-    extra_opts: [--strip-components=1]
+    extra_opts: [--strip-components=1, "azcopy_linux_amd64_{{ azcopy_version }}/azcopy"]
   when: version.rc != 0
