@@ -17,9 +17,9 @@
   ansible.builtin.unarchive:
     src: "{{ azcopy_pkg_url }}"
     dest: "{{ azcopy_bin_path }}"
-    owner: "root"
-    group: "root"
-    mode: "u+rwx,g+rx,o+rx"
+    owner: "{{ azcopy_username }}"
+    group: "{{ azcopy_group }}"
+    mode: 0755
     remote_src: yes
     exclude:
       - ThirdPartyNotice.txt
