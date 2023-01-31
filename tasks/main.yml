@@ -6,6 +6,7 @@
     state: present
     update_cache: yes
   with_items: "{{ azcopy_pkg_deps }}"
+  when: (azcopy_pkg_deps is defined) and (azcopy_pkg_deps | length > 0)
 
 - name: Check current version installed
   ansible.builtin.shell: "{{ azcopy_bin_path }}/azcopy --version 2>&1 | head -n 1 | grep {{ azcopy_version }}"
