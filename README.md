@@ -9,7 +9,7 @@ This role install azcopy binary from microsoft repository.
 
 ## Requirements
 
-* This role supports: CentOS 7, AlmaLinux 8, RockyLinux 8, Ubuntu, Debian, or Red Hat Enterprise Linux distribution.
+* This role supports: CentOS 7, AlmaLinux 8/9, RockyLinux 8/9, Ubuntu, Debian, or Red Hat Enterprise Linux distribution.
 * Ansible 2.9 or higher.
 
 ## Role Variables
