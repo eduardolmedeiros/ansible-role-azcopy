@@ -18,12 +18,12 @@ platforms:
     image: rockylinux:8
   - name: rockylinux-9
     image: rockylinux:9
-  - name: debian-buster
-    image: debian:buster
+  - name: debian-bookworm
+    image: debian:bookworm
   - name: debian-bullseye
     image: debian:bullseye
-  - name: ubuntu-18-04
-    image: ubuntu:18.04
+  - name: ubuntu-22-04
+    image: ubuntu:22.04
   - name: ubuntu-20-04
     image: ubuntu:20.04
 provisioner:
