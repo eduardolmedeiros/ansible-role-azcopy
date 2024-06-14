@@ -25,7 +25,6 @@ If you want to replace or change some variable, please change on playbook level.
 | azcopy_group       | azcopy group name        | root           |
 | azcopy_bin_path    | installation path        | /usr/local/bin |
 | azcopy_pkg_url     | azcopy source url        |                |
-| azcopy_sha256      | sha256 sum               |                |
 ```
 
 ## Dependencies
